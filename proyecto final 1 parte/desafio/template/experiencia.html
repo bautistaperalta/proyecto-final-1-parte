@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+<link rel="stylesheet" href="{%static 'css/cosa.css'%}">
+<p>hola! aca podes registrarte</p>
+<div class="formDataRegistros">
+    <form class="formDataRegistros" action="/AppDesafio/experiencia/" method="POST"> {% csrf_token %}
+        <input type="text" name="empleador" placeholder="Empresa">
+        <input type="text" name="puesto" placeholder="Puesto">
+        <input type="date" name="fechaDeinicio" placeholder="Fecha de inicio">
+        <input type="date" name="fechaDefin" placeholder="Fecha de fin">
+        <button type="submit" class="btn btn-primary btndj">Registrar</button>
+    </form>
+</div>
+
+{% endblock %}

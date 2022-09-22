@@ -1,0 +1,35 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+<link rel="stylesheet" href="{%static 'css/cosa.css'%}">
+<p>hola! aca podes registrarte</p>
+<div class="formDataRegistros">
+    <form class="formDataRegistros" action="/AppDesafio/registro/" method="POST"> {% csrf_token %}
+        <input type="text" name="nombre_completo" placeholder="nombre completo">
+        <input type="date" name="fechaDeNacimiento" placeholder="Fecha de nacimiento">
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="contraseña" placeholder="contraseña">
+        <button type="submit" class="btn btn-primary btndj">Registrar</button>
+    </form>
+</div>
+<div class="formDataRegistros">
+    <form class="formDataRegistros" action="/AppDesafio/buscar_user/" method="GET">  
+        <input type="email"  name="email" placeholder="email">
+        <button type="submit" class="btn btn-primary btndj">Buscar </button>
+    </form>
+</div>
+<div>
+    {% if usuarios %}
+    <ul>
+        {% for usuario in usuarios %}
+        <li>{{usuario.nombre_completo}}</li>
+        <li>{{usuario.email}}</li>
+        <li>{{usuario.fechaDeNacimiento}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}
